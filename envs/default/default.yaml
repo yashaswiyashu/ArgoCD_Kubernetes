@@ -12,4 +12,5 @@ spec:
     directory:
       recurse: true
     path: envs/default
-    repoURL: 
+    targetRevision: main
+    repoURL: https://github.com/yashaswiyashu/ArgoCD_Kubernetes
