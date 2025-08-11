@@ -14,3 +14,9 @@ spec:
     path: envs/default
     targetRevision: main
     repoURL: https://github.com/yashaswiyashu/ArgoCD_Kubernetes
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
