@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: appointment-service-container
-          image: registry.rscsys.in/appointment-service:1.0.0
+          image: registry.rscsys.in/appointment-service:1.0.1
           imagePullPolicy: Always
           ports:
             - containerPort: 4000
