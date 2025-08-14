@@ -1,30 +1,33 @@
-apiVersion: apps/vl 
-kind: Deployment 
-metadata: 
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
   name: appointment-service
-spec: 
-  replicas: 1 
-  selector: 
-    matchLabels: 
+  namespace: default
+  labels:
+    app: appointment-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
       app: appointment-service
-  template: 
-    metadata: 
-      labels: 
+  template:
+    metadata:
+      labels:
         app: appointment-service
-    spec: 
-      containers: 
-      - name: appointment-service-container
-        image: registry.rscsys.in/appointment-service:1.0.0
-        imagePullPolicy: Always 
-        ports: 
-        - containerPort: 4000
-        # env: 
-        # - name: REACT_APP_API_URL 
-        #   value: "https://api.example.com" 
-        # resources: 
-        #   requests: 
-        #     memory: "256Mi" 
-        #     cpu: "500m" 
-        #   limits: 
-        #     memory: "512Mi" 
-        #     cpu: "1"
+    spec:
+      imagePullSecrets:
+        - name: regcred   # <-- create this secret (see commands below)
+      containers:
+        - name: appointment-service-container
+          image: registry.rscsys.in/appointment-service:1.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 4000
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "500m"
+            limits:
+              memory: "512Mi"
+              cpu: "1"
