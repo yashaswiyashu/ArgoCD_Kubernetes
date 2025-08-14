@@ -1,4 +1,4 @@
-apiversion: apps/vl 
+apiVersion: apps/vl 
 kind: Deployment 
 metadata: 
   name: appointment-service
