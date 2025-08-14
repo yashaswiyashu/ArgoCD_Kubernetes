@@ -1,0 +1,30 @@
+apiversion: apps/vl 
+kind: Deployment 
+metadata: 
+  name: appointment-service
+spec: 
+  replicas: 1 
+  selector: 
+    matchLabels: 
+      app: appointment-service
+  template: 
+    metadata: 
+      labels: 
+        app: appointment-service
+    spec: 
+      containers: 
+      - name: appointment-service-container
+        image: registry.rscsys.in/appointment-service:1.0.0
+        imagePullPolicy: Always 
+        ports: 
+        - containerPort: 4000
+        # env: 
+        # - name: REACT_APP_API_URL 
+        #   value: "https://api.example.com" 
+        # resources: 
+        #   requests: 
+        #     memory: "256Mi" 
+        #     cpu: "500m" 
+        #   limits: 
+        #     memory: "512Mi" 
+        #     cpu: "1"
